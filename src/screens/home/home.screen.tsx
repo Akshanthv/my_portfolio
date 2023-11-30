@@ -1,8 +1,19 @@
 import React from "react";
+import Intro from "../../components/intro.component";
+import Skills from "../../components/skills.component";
+import Projects from "../../components/projects.component";
+import Contact from "../../components/contact.component";
+
 
 const Home = () => {
     return (
-        <span>Home</span>
+        <div> 
+        <Intro />
+        <Skills />
+        <Projects />
+        <Contact />
+        </div>
+
     )
 }
 
