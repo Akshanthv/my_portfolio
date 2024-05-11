@@ -28,7 +28,7 @@ export const Projects_Content = [
       title: "Portfolio using Nextjs and Tailwind",
       text: "Responsive portfolio built with NextJS and deployed on AWS Cloudfront.",
     
-      link:"https://akshanthv.in"
+      link:"https://github.com/Akshanthv/my_portfolio"
     },
     {
       title: "EveSync",
