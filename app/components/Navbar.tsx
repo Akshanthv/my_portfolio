@@ -44,11 +44,11 @@ const Navbar = () => {
                 </div>
 
                 <ul
-                    className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static text-lg bg-[#282c34] bg-opacity-100 md:bg-opacity-0
-                md:z-auto z-[-1] left-0 w-full md:w-auto pt-10 md:pt-0 ml-8 md:ml-0
+                    className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static text-lg bg-[#282c34] 
+                md:z-auto z-[-1] left-0 w-full md:w-auto pt-10 md:pt-0 pl-8 md:ml-0
                 transition-all duration-400 ease-in ${isOpen ? "top-18 opacity-100" : "top-[-400px]"} opacity-0 md:opacity-100 `}
                 >
-                    <li className='   text-lg font-light bg-transpernt border-solid border-[1px] rounded-md px-3 border-[#fafafa] md:mt-0 mt-10 '
+                    <li className='   text-lg font-light w-[140px] bg-transpernt border-solid border-[1px] rounded-md px-3 border-[#fafafa] md:mt-0 mt-10 '
                     ><a href='https://s3.amazonaws.com/akshanth.resume.portfolio/AkshanthV.pdf' download="CV" target="_blank">
                         Download CV</a></li>
 

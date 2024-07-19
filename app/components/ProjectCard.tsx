@@ -20,7 +20,7 @@ const ProjectCard = ({ title, text, link }: IProject) => {
         <p className='font-sans text-[18px] md:text-[22px]  text-[#434343] w-[80%] md:w-[600px] ml-0 md:ml-10 pr-0 md:pr-10 mt-5 md:mt-0'>{text}</p>
         <Link href={link} target='_blank' >
             <BiLinkExternal 
-            className='text-[30px] ml-[45%] md:ml-[200px] text-[#606060] hover:text-black mt-5 md:mt-0'
+            className='text-[30px] ml-0 md:ml-[200px] text-[#606060] hover:text-black mt-5 md:mt-0'
             />
             
         </Link>

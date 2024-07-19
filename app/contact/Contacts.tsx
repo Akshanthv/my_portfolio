@@ -14,7 +14,7 @@ const Contacts = () => {
           Follow Me</h1>
           <div className='text-[26px] md:text-[40px] text-[#171717] flex flex-row gap-[10%] items-center justify-center pb-10 pt-0 md:pt-10'>
             <Link
-            href={'https://www.linkedin.com/in/akshanthv/'} >
+            href={'https://www.linkedin.com/in/akshanthv/'} target='_blank' >
               <AiOutlineLinkedin
               />
             </Link>
@@ -29,7 +29,7 @@ const Contacts = () => {
               />
             </Link>
             <Link
-            href={'https://www.instagram.com/akshanthv/'} >
+            href={'https://www.instagram.com/akshanthv/'} target='_blank' >
             <FaInstagram/>
             </Link>
           </div>
