@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
-import Skills from "./skills/Skills";
+import Services from "./services/Services";
 import Projects from "./projects/Projects";
 import Contacts from "./contact/Contacts";
 import About from "./about/About";
@@ -10,8 +10,8 @@ import About from "./about/About";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Akshanth V",
-  description: "NextJS Portfolio",
+  title: "Suman A",
+  description: "Suman's Portfolio",
   
 };
 
@@ -27,7 +27,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <About />
-        <Skills />
+        <Services />
         <Projects />
         <Contacts />
         </body>

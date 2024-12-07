@@ -14,7 +14,7 @@ const About = () => {
             className="text-[30px] md:text-[40px] text-green-500 ">
             Hello, this is</h4>
            <h1 className="text-[40px] sm:text-[40px] md:text-[60x] xl:text-[70px] font-sans text-start text-white  w-full">
-            Akshanth V</h1>
+            Suman Angadi</h1>
         </div>
         <div className="flex flex-col md:flex-row md:text-[22px] text-[22px] xl:text-[30px] sm:[22px]">
           <h4 className=" text-white "
@@ -25,10 +25,13 @@ const About = () => {
 
         </div>
         <p className=' text-[16px] md:text-[20px] text-[#efefef] mb-5 hidden md:block xl:block sm:block justify-between text-start mr-10'
-        >I thrive on exploring and implementing the latest
-          technologies to create innovative solutions.
-          Expert in application and architecture design with excellent problem solving skills.</p>
-
+        >Throughout my career, I have successfully overseen and executed projects that prioritize quality craftsmanship, 
+        efficiency, and safety. My expertise includes [mention key skills, e.g., project management, structural planning, 
+        sustainable building practices, or on-site supervision].</p>
+        <p className=' text-[16px] md:text-[20px] text-[#efefef] mb-5 hidden md:block xl:block sm:block justify-between text-start mr-10'
+        >This portfolio showcases a range of my completed projects, highlighting my attention to detail, problem-solving abilities,
+           and commitment to delivering projects on time and within budget. I am passionate about turning architectural visions into reality 
+           and collaborating with teams to create structures that stand the test of time.</p>
         <ContactButton />
       </div>
       <div className=' w-[40%]'>

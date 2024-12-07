@@ -31,8 +31,8 @@ const Navbar = () => {
                         />
                     </Link>
                     <span
-                        className='text-[25px] xl:text-[40px] md:text-[25px] font-sans  '
-                    >Akshanth V</span>
+                        className='text-[25px] xl:text-[40px] md:text-[25px] font-thin  '
+                    >SUMAN</span>
                 </div>
                 <div onClick={() => setIsOpen(!isOpen)}
                     className='text-3xl absolute right-6 top-6 cursor-pointer md:hidden'>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 md:z-auto z-[-1] left-0 w-full md:w-auto pt-10 md:pt-0 pl-8 md:ml-0
                 transition-all duration-400 ease-in ${isOpen ? "top-18 opacity-100" : "top-[-400px]"} opacity-0 md:opacity-100 `}
                 >
-                    <li className='   text-lg font-light w-[140px] bg-transpernt border-solid border-[1px] rounded-md px-3 border-[#fafafa] md:mt-0 mt-10 '
+                    <li className='   text-lg font-light w-[140px] bg-transpernt border-solid border-[1px] rounded-md px-2 border-[#fafafa] md:mt-0 mt-10 '
                     ><a href='https://s3.amazonaws.com/akshanth.resume.portfolio/AkshanthV.pdf' download="CV" target="_blank">
                         Download CV</a></li>
 
@@ -65,12 +65,12 @@ const Navbar = () => {
                     <li className='xl:ml-8 md:ml-4 sm:ml-2 ml-0 my-7 md:my-0'>
                     <button >
                         <Link activeClass="active"
-                            to="skills"
+                            to="services"
                             spy={true}
                             smooth={true}
                             offset={50}
                             duration={500} 
-                            className='  ml-4 '>Skills</Link></button>
+                            className='  ml-4 '>Services</Link></button>
                     </li>
                     <li className='xl:ml-8 md:ml-4 sm:ml-2 ml-0 my-7 md:my-0'>
                     <button >
