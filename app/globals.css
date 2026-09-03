@@ -2,40 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Belt-and-braces: nothing should ever scroll the page sideways on a phone. */
+    overflow-x: clip;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  /* Let long headings break at sensible points instead of stranding one word. */
+  h1, h2 {
+    text-wrap: balance;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans text-base;
+  }
+
+  ::selection {
+    background-color: #2F4A3C;
+    color: #FCFBF9;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2F4A3C;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3 {
+    @apply font-display font-normal;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+  /* Structural eyebrow: uppercase mono label used to name a section. */
+  .eyebrow {
+    @apply font-mono text-label uppercase text-muted;
+  }
+
+  /* Page gutter — one source of truth so sections never disagree. */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8 lg:px-12;
+  }
+
+  .rule-top {
+    @apply border-t border-rule;
+  }
+
+  /* Understated text link with an underline that grows from the left. */
+  .link-underline {
+    @apply relative inline-block text-ink no-underline;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute bottom-[-2px] left-0 h-px w-full origin-right scale-x-0 bg-ink;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Scroll-reveal: starts hidden, .is-in is added by IntersectionObserver. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   }
-} */
-*{
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
 }
-::-webkit-scrollbar {
+
+/* Hide scrollbars on the horizontal tenant rail only, not the whole document. */
+.no-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-bar::-webkit-scrollbar {
   display: none;
+}
+
+/* The rail hides its scrollbar, so fade the trailing edge as the affordance.
+   Removed once there's room for every tenant to sit on one line. */
+.fade-edge {
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent);
+}
+@media (min-width: 900px) {
+  .fade-edge {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    /* Without this, an infinite animation at 0.01ms strobes instead of stopping. */
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }
