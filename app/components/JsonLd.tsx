@@ -1,5 +1,10 @@
 import { PRODUCTS, SOCIALS, STACK } from "@/constants";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/constants/site";
+import {
+  SAME_AS_PROFILES,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/constants/site";
 
 /* ---------------------------------------------------------------------------
    Structured data. This is the part Google actually reads to decide *what*
@@ -36,7 +41,10 @@ const jsonLd = {
       /* sameAs is the strongest identity signal there is — it is how Google
          merges this page with the LinkedIn and GitHub profiles of the same
          person instead of treating all three as strangers. */
-      sameAs: SOCIALS.filter((s) => s.href.startsWith("http")).map((s) => s.href),
+      sameAs: [
+        ...SOCIALS.filter((s) => s.href.startsWith("http")).map((s) => s.href),
+        ...SAME_AS_PROFILES,
+      ],
       owns: PRODUCTS.map((p) => ({ "@id": `${p.url}/#product` })),
     },
     {

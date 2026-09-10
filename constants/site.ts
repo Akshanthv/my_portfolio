@@ -26,3 +26,12 @@ export const SITE_KEYWORDS = [
   "Next.js developer India",
   "full stack engineer India",
 ];
+
+/* ---------------------------------------------------------------------------
+   Identity-only profiles. SOCIALS drives what the Contact section renders;
+   these appear nowhere on the page and exist purely to widen the JSON-LD
+   sameAs graph, which is how Google merges these accounts into one entity.
+--------------------------------------------------------------------------- */
+export const SAME_AS_PROFILES = ["https://x.com/Akshanth_v"];
+
+export const TWITTER_HANDLE = "@Akshanth_v";

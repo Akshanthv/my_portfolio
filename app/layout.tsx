@@ -11,6 +11,7 @@ import {
   SITE_NAME,
   SITE_TITLE,
   SITE_URL,
+  TWITTER_HANDLE,
 } from "@/constants/site";
 
 const display = Fraunces({
@@ -82,6 +83,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    creator: TWITTER_HANDLE,
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
   },
