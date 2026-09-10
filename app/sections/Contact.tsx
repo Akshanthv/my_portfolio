@@ -1,10 +1,10 @@
 import { SOCIALS } from "@/constants";
 
 const Contact = () => (
-  <section id="contact" className="scroll-mt-28 py-20 sm:py-28">
+  <section id="contact" data-motion-section className="scroll-mt-28 py-20 sm:py-28">
     <div className="shell">
       <div className="reveal flex items-baseline justify-between border-b border-rule pb-5">
-        <h2 className="text-h2">Contact</h2>
+        <h2 data-wipe className="text-h2">Contact</h2>
         <p className="eyebrow">Open to build</p>
       </div>
 

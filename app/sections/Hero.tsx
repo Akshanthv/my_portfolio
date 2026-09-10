@@ -1,82 +1,43 @@
-"use client";
+import Storefront from "../components/Storefront";
 
-import { PRODUCTS } from "@/constants";
-import { useTenant } from "../components/TenantProvider";
+/**
+ * Portfolio-first hero: the person leads, the products are the evidence.
+ *
+ * The heading is three sibling spans rather than one string with inline markup
+ * — splitLines() flattens nested elements to text, so the italic accent line
+ * has to be its own wipe target to keep its styling.
+ */
+const Hero = () => (
+  <section
+    id="top"
+    data-motion-section
+    className="shell flex min-h-[88svh] flex-col justify-center pb-20 pt-[140px] sm:pb-28 sm:pt-[178px]"
+  >
+    <p data-wipe className="eyebrow">
+      Akshanth V — engineer &amp; founder
+    </p>
 
-const STEP = 90;
+    <h1 className="mt-7 max-w-[17ch] text-h1">
+      <span data-wipe className="block">
+        I build the software
+      </span>
+      <span data-wipe className="block italic text-moss">
+        small businesses
+      </span>
+      <span data-wipe className="block">
+        actually run on.
+      </span>
+    </h1>
 
-const Hero = () => {
-  const { tenant } = useTenant();
+    <p data-wipe className="mt-8 max-w-prose text-lead text-ink-soft">
+      Two products in production. Each runs many businesses from a single
+      codebase — DineOnTap for restaurants, Drapeinn for boutiques — and every
+      customer gets a storefront that looks like theirs, not like a template.
+    </p>
 
-  return (
-    <section id="top" className="shell pb-20 pt-[140px] sm:pb-28 sm:pt-[178px]">
-      <p className="eyebrow reveal" style={{ transitionDelay: `${STEP * 0}ms` }}>
-        Akshanth V — Founder &amp; engineer
-      </p>
-
-      <h1
-        className="reveal mt-7 max-w-[16ch] text-h1"
-        style={{ transitionDelay: `${STEP * 1}ms` }}
-      >
-        One codebase.
-        <br />
-        <span
-          className="italic transition-colors duration-[900ms] ease-out"
-          style={{ color: tenant.accent }}
-        >
-          Every storefront
-        </span>{" "}
-        its own.
-      </h1>
-
-      <p
-        className="reveal mt-8 max-w-prose text-lead text-ink-soft"
-        style={{ transitionDelay: `${STEP * 2}ms` }}
-      >
-        I build multi-tenant platforms for the businesses around me — restaurants
-        that want their own ordering surface instead of a commission, boutiques
-        that want a store that looks like theirs. Both are live.
-      </p>
-
-      {/* Live indicator — the hero is tinted by whichever storefront is on air. */}
-      <p
-        className="reveal mt-9 flex items-center gap-2.5 font-mono text-label uppercase text-muted"
-        style={{ transitionDelay: `${STEP * 3}ms` }}
-      >
-        <span
-          aria-hidden
-          className="inline-block h-2 w-2 rounded-full transition-colors duration-[900ms]"
-          style={{ backgroundColor: tenant.accent }}
-        />
-        <span aria-live="polite">Now rendering {tenant.subdomain}</span>
-      </p>
-
-      <div
-        className="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-rule pt-6"
-        style={{ transitionDelay: `${STEP * 4}ms` }}
-      >
-        {PRODUCTS.map((p) => (
-          <a
-            key={p.name}
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-baseline gap-2"
-          >
-            <span className="font-mono text-micro text-ink transition-colors group-hover:text-moss">
-              {p.url.replace("https://", "")}
-            </span>
-            <span
-              aria-hidden
-              className="text-micro text-muted transition-transform duration-300 group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-};
+    {/* The claim above, demonstrated rather than asserted. */}
+    <Storefront />
+  </section>
+);
 
 export default Hero;

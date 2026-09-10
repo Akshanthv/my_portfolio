@@ -1,10 +1,10 @@
 import { PRODUCTS, TENANTS } from "@/constants";
 
 const Work = () => (
-  <section id="work" className="scroll-mt-28 bg-paper-2 py-20 sm:py-28">
+  <section id="work" data-motion-section className="scroll-mt-28 bg-paper-2 py-20 sm:py-28">
     <div className="shell">
       <div className="reveal flex items-baseline justify-between border-b border-rule pb-5">
-        <h2 className="text-h2">Work</h2>
+        <h2 data-wipe className="text-h2">Work</h2>
         <p className="eyebrow">Two products, live</p>
       </div>
 

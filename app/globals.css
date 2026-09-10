@@ -4,6 +4,9 @@
 
 @layer base {
   html {
+    /* Native smooth scroll is the no-JS baseline. Once MotionRuntime boots,
+       .motion-js hands scrolling to Lenis and this must stand down or the two
+       fight over the same gesture. */
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -66,7 +69,8 @@
 }
 
 @layer utilities {
-  /* Scroll-reveal: starts hidden, .is-in is added by IntersectionObserver. */
+  /* Scroll-reveal baseline. GSAP takes these over under .motion-js; the CSS
+     transition below only runs if JS never boots. */
   .reveal {
     opacity: 0;
     transform: translateY(14px);
@@ -77,6 +81,70 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion runtime hand-off.
+--------------------------------------------------------------------------- */
+
+/* Lenis is driving — kill native smooth scroll so the two do not compete. */
+html.motion-js {
+  scroll-behavior: auto;
+}
+
+/* GSAP owns opacity/transform now; the CSS transition would double-animate. */
+html.motion-js .reveal {
+  transition: none;
+}
+
+/* Reduced motion, or JS that never arrived: everything is simply visible. */
+html.motion-off .reveal,
+html.motion-off [data-wipe] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+   The gradient wipe.
+
+   Each line is painted by a background gradient clipped to the glyphs. Sliding
+   the gradient across (--bg-progress 30 -> 100) makes the text appear to be
+   written in, led by a hairline of the moss accent. Cheap: it animates only
+   background-position, never layout.
+--------------------------------------------------------------------------- */
+.split-line {
+  display: inline-block;
+  position: relative;
+  text-indent: 0;
+}
+
+html.motion-js .split-line {
+  --bg-progress: 30;
+  --color-final: currentColor;
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-final) 0%,
+    var(--color-final) 30%,
+    #2F4A3C 40%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background-size: 350% 100%;
+  background-position-x: calc((100 - var(--bg-progress)) * 1%);
+  background-position-y: 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Text that will be wiped starts invisible so it cannot flash unsplit before
+   the runtime measures it. Scoped to .motion-js so no-JS keeps readable text. */
+html.motion-js [data-wipe] {
+  opacity: 0;
+}
+html.motion-js [data-wipe][data-split="done"] {
+  opacity: 1;
 }
 
 /* Hide scrollbars on the horizontal tenant rail only, not the whole document. */
@@ -110,4 +178,6 @@
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  [data-wipe] { opacity: 1 !important; }
+  .split-line { color: inherit; background-image: none; }
 }

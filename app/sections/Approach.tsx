@@ -13,10 +13,10 @@ const Approach = () => {
   ];
 
   return (
-    <section id="approach" className="scroll-mt-28 py-20 sm:py-28">
+    <section id="approach" data-motion-section className="scroll-mt-28 py-20 sm:py-28">
       <div className="shell">
         <div className="reveal flex items-baseline justify-between border-b border-rule pb-5">
-          <h2 className="text-h2">Approach</h2>
+          <h2 data-wipe className="text-h2">Approach</h2>
           <p className="eyebrow">Reference storefronts</p>
         </div>
 

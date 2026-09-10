@@ -3,7 +3,7 @@ import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Reveal from "./components/Reveal";
+import MotionRuntime from "./components/MotionRuntime";
 import JsonLd from "./components/JsonLd";
 import {
   SITE_DESCRIPTION,
@@ -101,6 +101,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="bg-paper text-ink antialiased">
+        {/* Reveal animations start at opacity:0 and are released by JS. If JS
+            never arrives, that would leave most of the page invisible rather
+            than merely unanimated — so hand no-JS readers the finished state. */}
+        <noscript>
+          <style>{`.reveal,[data-wipe]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <a
           href="#work"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
@@ -110,7 +116,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <Reveal />
+        <MotionRuntime />
         <JsonLd />
       </body>
     </html>

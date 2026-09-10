@@ -7,10 +7,10 @@ export const SITE_URL = "https://www.akshanthv.in";
 
 export const SITE_NAME = "Akshanth V";
 
-export const SITE_TITLE = "Akshanth V — Multi-tenant platform engineer";
+export const SITE_TITLE = "Akshanth V — Engineer & founder";
 
 export const SITE_DESCRIPTION =
-  "Akshanth V builds multi-tenant SaaS platforms. DineOnTap gives restaurants their own commission-free ordering surface; Drapeinn runs many boutique storefronts from one codebase.";
+  "Akshanth V builds the software small businesses run on. Two multi-tenant products in production: DineOnTap for restaurants, Drapeinn for boutiques \u2014 each running many storefronts from one codebase.";
 
 /* Terms someone would actually type. Keywords are not a ranking signal on
    their own — these exist so the OG/meta layer stays consistent with the

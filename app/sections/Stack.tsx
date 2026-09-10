@@ -1,10 +1,10 @@
 import { STACK, OTHER_WORK } from "@/constants";
 
 const Stack = () => (
-  <section id="stack" className="scroll-mt-28 bg-paper-2 py-20 sm:py-28">
+  <section id="stack" data-motion-section className="scroll-mt-28 bg-paper-2 py-20 sm:py-28">
     <div className="shell">
       <div className="reveal flex items-baseline justify-between border-b border-rule pb-5">
-        <h2 className="text-h2">Stack</h2>
+        <h2 data-wipe className="text-h2">Stack</h2>
         <p className="eyebrow">What I reach for</p>
       </div>
 

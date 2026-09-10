@@ -5,7 +5,7 @@ import { SITE_NAME } from "@/constants/site";
    link renders as a bare grey card everywhere it is shared, and Google shows
    nothing next to the result — with max-image-preview:large set below, this
    is the image it uses. */
-export const alt = "Akshanth V — multi-tenant platform engineer";
+export const alt = "Akshanth V — I build the software small businesses run on";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,13 +40,14 @@ export default async function Image() {
           style={{
             display: "flex",
             flexDirection: "column",
-            fontSize: 92,
+            fontSize: 76,
             lineHeight: 1.04,
             letterSpacing: "-0.03em",
           }}
         >
-          <span>One codebase.</span>
-          <span style={{ color: "#2F4A3C" }}>Every storefront its own.</span>
+          <span>I build the software</span>
+          <span style={{ color: "#2F4A3C", fontStyle: "italic" }}>small businesses</span>
+          <span>actually run on.</span>
         </div>
 
         <div
