@@ -3,7 +3,7 @@
    tag, the sitemap, robots.txt, the OG image and the JSON-LD graph. Changing
    the domain here changes it everywhere — nothing else hardcodes a URL.
 --------------------------------------------------------------------------- */
-export const SITE_URL = "https://akshanthv.in";
+export const SITE_URL = "https://www.akshanthv.in";
 
 export const SITE_NAME = "Akshanth V";
 
