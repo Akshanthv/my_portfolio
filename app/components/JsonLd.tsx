@@ -29,7 +29,9 @@ const jsonLd = {
       jobTitle: "Founder & software engineer",
       description: SITE_DESCRIPTION,
       email: byLabel("Email"),
-      telephone: byLabel("Phone"),
+      /* Phone is deliberately not published here. It is on the page for a
+         human to read, but putting it in the graph makes it trivially
+         machine-scrapable. */
       knowsAbout: STACK.flatMap((g) => g.items),
       /* sameAs is the strongest identity signal there is — it is how Google
          merges this page with the LinkedIn and GitHub profiles of the same
