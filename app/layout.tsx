@@ -4,6 +4,14 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Reveal from "./components/Reveal";
+import JsonLd from "./components/JsonLd";
+import {
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/constants/site";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -35,15 +43,54 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Akshanth V — Multi-tenant platforms",
-  description:
-    "I build multi-tenant SaaS platforms. DineOnTap gives restaurants their own ordering surface; Drapeinn runs many boutique storefronts from one codebase.",
-  openGraph: {
-    title: "Akshanth V — Multi-tenant platforms",
-    description:
-      "Two products, many storefronts, one codebase each. DineOnTap and Drapeinn.",
-    type: "website",
+  /* metadataBase is what turns every relative URL below — the canonical, the
+     generated OG image — into the absolute URL crawlers require. */
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: `%s — ${SITE_NAME}`,
   },
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  /* One page, one canonical. Vercel serves the same content on the
+     *.vercel.app preview domains too — this tells Google which one counts. */
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "profile",
+    firstName: "Akshanth",
+    lastName: "V",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  /* Paste the token from Search Console into this env var on Vercel; when it
+     is unset the tag is simply omitted rather than rendered empty. */
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -62,6 +109,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <Reveal />
+        <JsonLd />
       </body>
     </html>
   );
