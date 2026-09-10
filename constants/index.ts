@@ -188,5 +188,5 @@ export const SOCIALS = [
   { label: "Email", value: "akshanthv@gmail.com", href: "mailto:akshanthv@gmail.com" },
   { label: "LinkedIn", value: "/in/akshanthv", href: "https://www.linkedin.com/in/akshanthv/" },
   { label: "GitHub", value: "@Akshanthv", href: "https://github.com/Akshanthv" },
-  { label: "Phone", value: "+91 79933 17790", href: "tel:+917993317790" },
+  { label: "Phone", value: "+91 94929 62262", href: "tel:+919492962262" },
 ];
