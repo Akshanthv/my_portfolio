@@ -41,6 +41,9 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  /* Paints the mobile browser chrome the same paper as the page, so the bar
+     above the hero stops reading as a separate white strip. */
+  themeColor: "#FCFBF9",
 };
 
 export const metadata: Metadata = {
@@ -93,6 +96,10 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   category: "technology",
+  /* Next picks app/icon.svg, app/favicon.ico and app/apple-icon.png up from
+     the filesystem on its own; this only names the manifest route so the tab
+     icon and the installed-app icon come from the same set. */
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({

@@ -1,0 +1,24 @@
+<!--
+  Tab icon. Modern browsers prefer this over favicon.ico, so it is the one
+  that actually renders in the tab — and being vector it stays sharp at every
+  density.
+
+  The mark is the AK monogram from app/components/Logo.tsx, unaltered: same
+  coordinates, same stroke ratio, same butt caps. It is only uniformly scaled
+  and centred onto a solid moss badge, because at 16px a hairline mark on a
+  transparent ground disappears into the tab strip and a filled badge does not.
+
+  GENERATED — do not hand-edit. This file and its PNG siblings (favicon.ico,
+  apple-icon.png, public/icon-*.png) all come out of one script from the
+  coordinates in Logo.tsx; editing one by hand makes them disagree.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="7" fill="#2F4A3C"/>
+  <g stroke="#FCFBF9" stroke-width="2.326" fill="none">
+    <path d="M15.705 4.916V27.01"/>
+    <path d="M6.208 27.01L15.705 4.916"/>
+    <path d="M10.762 16.932H15.705"/>
+    <path d="M15.705 16.932L25.977 4.916"/>
+    <path d="M15.705 16.932L25.977 27.01"/>
+  </g>
+</svg>

@@ -20,14 +20,24 @@ app/
   layout.tsx            root metadata (canonical, OG, robots directives)
   page.tsx              composes the sections
   sections/             Hero, Work, Approach, Stack, Contact
-  components/           Navbar, Footer, Marquee, Logo, Reveal,
-                        TenantProvider, JsonLd
+  components/           Navbar, Footer, Marquee, Logo, Storefront,
+                        MotionRuntime, TenantProvider, JsonLd
+  lib/motion.ts         GSAP/Lenis setup shared by the motion layer
   robots.ts             -> /robots.txt
   sitemap.ts            -> /sitemap.xml
+  manifest.ts           -> /manifest.webmanifest
   opengraph-image.tsx   -> generated 1200x630 share card
+  icon.svg              -> tab icon (generated; see Icons)
+  favicon.ico           -> 16/32/48 fallback (generated)
+  apple-icon.png        -> 180x180 home-screen icon (generated)
 constants/
   index.ts              tenants, products, stack, socials — all page copy
   site.ts               canonical domain, description, sameAs profiles
+public/
+  icon-192.png          -> manifest icons (generated)
+  icon-512.png
+scripts/
+  generate-icons.mjs    rasterises every icon from the Logo.tsx monogram
 ```
 
 `TenantProvider` cycles the demo storefronts from `constants/index.ts` and
@@ -35,6 +45,42 @@ tints the hero with whichever tenant is on air. It is the only component that
 *holds* that state — `Hero` and `Approach` are client components that read it
 via `useTenant`, while `Work`, `Stack`, `Contact` and `Marquee` stay server
 components and are passed through as children.
+
+## Icons
+
+Every icon is generated from one source — the `AK` monogram in
+`app/components/Logo.tsx` — by `npm run icons`:
+
+```bash
+npm run icons   # rewrites app/icon.svg, app/favicon.ico, app/apple-icon.png,
+                # public/icon-192.png, public/icon-512.png
+```
+
+**Change the monogram in `Logo.tsx`, then re-run that script.** Hand-editing
+any generated file makes the tab icon disagree with the header logo, which is
+exactly the drift the script exists to prevent.
+
+The script reads the path coordinates and the `2.4` stroke width straight out
+of `Logo.tsx`, measures the true ink bounds of a butt-capped stroke, then
+applies a *uniform* scale so the stroke-to-mark ratio is preserved (it prints
+both ratios so any divergence is visible). The only departures from the header
+mark are deliberate and structural:
+
+- **A solid moss badge.** At 16px a hairline mark on a transparent ground
+  disappears into the tab strip; a filled badge does not.
+- **The mark fills 74% of the badge.** Small-size legibility comes from
+  sizing the mark up, never from thickening the stroke, which would distort it.
+- **`apple-icon.png` is full-bleed with square corners.** iOS applies its own
+  mask, so shipping pre-rounded corners would double-round it and show
+  transparent notches.
+
+There are no image dependencies — the script rasterises and encodes the PNG
+and ICO containers itself using only `node:zlib`.
+
+> Next caches metadata routes aggressively. If a rebuilt icon does not appear,
+> the build is serving a stale copy: delete `.next` locally, or redeploy with
+> **Clear build cache** on Vercel. Browsers also cache favicons hard, so
+> hard-reload before concluding it did not work.
 
 ## Local development
 
